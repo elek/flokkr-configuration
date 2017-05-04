@@ -1,0 +1,11 @@
+version: "2"
+services:
+   consync:
+      container_name: consync
+      image: elek/consync
+      network_mode: host
+      volumes:
+         - ".:/data"
+      environment:
+         GATEWAY_HOST: "${GATEWAY_HOST}"
+         DATA_DIR: "${DATA_DIR}"
