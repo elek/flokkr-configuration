@@ -28,3 +28,15 @@ services:
       environment:
          KAFKA_REST_PROXY_URL: "http://localhost:9082"
          PROXY: "true"
+   kafkaconnect:
+      container_name: kafkaconnect
+      image: confluentinc/cp-kafka-connect
+      network_mode: host
+      command: ["watch", "ls", "/tmp"]
+      environment:
+         TERM: "linux"
+   asfgit2kafka:
+      container_name: asfgit2kafka
+      image: elek/asfgit2kafka
+      network_mode: host
+      command: ["-broker","melek-manual10-2.openstacklocal","-topic","asfgit4"] 
