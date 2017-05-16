@@ -1,12 +1,14 @@
 version: "2"
 services:
+{% include 'compose/slave.yaml' %}
    namenode:
       container_name: namenode
-      image: elek/hadoop-hdfs-namenode:2.8.0
+      image: elek/hadoop-hdfs-namenode:latest
       network_mode: host
       volumes:
          - "${DATA_DIR}:/data"
       environment:
+         ENSURE_NAMENODE_DIR: "/data/namenode"
          CONFIG_TYPE: "consul"
          CONSUL_KEY: "hdfs"
    resourcemanager:
@@ -16,15 +18,15 @@ services:
       environment:
          CONFIG_TYPE: "consul"
          CONSUL_KEY: "yarn"
-   # hbasemaster:
-   #    container_name: hbasemaster
-   #    image: elek/hbase-master
-   #    volumes:
-   #     - "${DATA_DIR}:/data"
-   #    network_mode: host
-   #    environment:
-   #       CONFIG_TYPE: "consul"
-   #       CONSUL_KEY: "hbase"
+   hbasemaster:
+      container_name: hbasemaster
+      image: elek/hbase-master
+      volumes:
+       - "${DATA_DIR}:/data"
+      network_mode: host
+      environment:
+         CONFIG_TYPE: "consul"
+         CONSUL_KEY: "hbase"
    zookeeper:
       container_name: zookeeper
       image: elek/zookeeper
@@ -61,12 +63,3 @@ services:
       environment:
          CONFIG_TYPE: "consul"
          CONSUL_KEY: "storm"
-   datanode:
-      container_name: datanode
-      image: elek/hadoop-hdfs-datanode:2.8.0
-      volumes:
-         - "${DATA_DIR}:/data"
-      network_mode: host
-      environment:
-         CONFIG_TYPE: "consul"
-         CONSUL_KEY: "hdfs"
