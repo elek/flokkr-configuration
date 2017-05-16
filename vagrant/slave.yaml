@@ -1,0 +1,22 @@
+version: "2"
+services:
+   consul:
+      image: progrium/consul
+      network_mode: host
+      command: "--server --bootstrap"
+   consulcompose:
+      image: elek/consul-compose
+      network_mode: host
+      volumes:
+         - "/var/run/docker.sock:/var/run/docker.sock"
+      environment:
+         CONSUL_COMPOSE_PATH: "conf/compose/node1.yaml"
+         CONSUL_SERVER: "localhost:8500"
+   consync:
+      image: elek/consync
+      network_mode: host
+      volumes:
+        - "/vagrant:/data"
+      environment:
+        - GATEWAY_HOST=node1
+        - DATA_DIR=/tmp
