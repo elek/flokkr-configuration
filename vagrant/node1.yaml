@@ -3,7 +3,7 @@ services:
    consul:
       image: progrium/consul
       network_mode: host
-      command: "--server --bootstrap"
+      command: "--server --bootstrap -advertise 192.168.50.11"
    consulcompose:
       image: elek/consul-compose
       network_mode: host
@@ -20,3 +20,26 @@ services:
       environment:
         - GATEWAY_HOST=node1
         - DATA_DIR=/tmp
+   logspout:
+      image: gliderlabs/logspout
+      network_mode: host
+      volumes:
+        - "/var/run/docker.sock:/var/run/docker.sock"
+      environment:
+        PORT: 2323
+   weavescope:
+      image: weaveworks/scope:1.3.0
+      network_mode: host
+      privileged: true
+      network_mode: host
+      volumes:
+        - "/var/run/docker.sock:/var/run/docker.sock"
+        - "/var/run/scope/plugins:/var/run/scope/plugins"
+      environment:
+         CHECKPOINT_DISABLE: "true"
+      command: "--probe.docker=true 192.168.50.12 192.168.50.13"
+   registrator:
+      image: elek/registrator.py
+      network_mode: host
+      volumes:
+         - "/var/run/docker.sock:/var/run/docker.sock"
