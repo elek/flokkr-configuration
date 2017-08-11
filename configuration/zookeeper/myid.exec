@@ -1,0 +1,3 @@
+#!/bin/bash
+mkdir -p /data/zookeeper
+echo `hostname | grep -o '[0-9]\+'` > /data/zookeeper/myid
