@@ -1,4 +1,4 @@
-yarn.resourcemanager.hostname: ${GATEWAY_HOST}
+yarn.resourcemanager.hostname: [[ service "resourcemanager"]]
 yarn.nodemanager.pmem-check-enabled: false
 yarn.nodemanager.delete.debug-delay-sec: 600
 yarn.nodemanager.vmem-check-enabled: false

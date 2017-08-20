@@ -1,1 +1,1 @@
-{%include "core-site.xml"%}
+[[ template "core-site.xml" ]]

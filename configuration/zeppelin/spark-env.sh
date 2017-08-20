@@ -1,1 +1,1 @@
-{%include "spark/spark-env.sh"%}
+[[ template "spark/spark-env.sh" ]]

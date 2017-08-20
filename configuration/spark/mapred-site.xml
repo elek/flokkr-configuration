@@ -1,1 +1,1 @@
-{%include "yarn/mapred-site.xml"%}
+[[ template "yarn/mapred-site.xml" ]]

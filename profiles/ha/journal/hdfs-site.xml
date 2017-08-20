@@ -1,2 +1,2 @@
-{%include "hdfs/hdfs-site.xml"%}
+[[ template "hdfs/hdfs-site.xml" ]]
 dfs.journalnode.edits.dir: /data/journalnode

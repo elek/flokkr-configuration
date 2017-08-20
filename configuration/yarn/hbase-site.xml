@@ -1,1 +1,1 @@
-{%include "hbase/hbase-site.xml"%}
+[[ template "hbase/hbase-site.xml" ]]

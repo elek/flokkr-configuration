@@ -1,1 +1,1 @@
-{%include "yarn/yarn-site.xml"%}
+[[ template "yarn/yarn-site.xml" ]]
