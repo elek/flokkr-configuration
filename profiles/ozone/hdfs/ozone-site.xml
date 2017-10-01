@@ -1,8 +1,8 @@
 ozone.ksm.address: ${GATEWAY_HOST}
 ozone.scm.names: ${GATEWAY_HOST}
-ozone.enabled: True
+ozone.enabled: true
 ozone.scm.datanode.id: /data/datanode.id
 ozone.scm.block.client.address: ${GATEWAY_HOST}
-ozone.container.metadata.dirs: /data/metadata
+ozone.metadata.dirs: /data/metadata
 ozone.handler.type: distributed
 ozone.scm.client.address: ${GATEWAY_HOST}
